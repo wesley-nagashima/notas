@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDOException;
@@ -34,15 +35,8 @@ class AuthController extends Controller
         $username = $request->input('text_username');
         $password = $request->input('text_password');
 
-        //test database connection
-        try {
-            DB::connection()->getPdo();
-            echo "Connection is OK!";
-        }
-        catch (PDOException $e) {
-            echo "Connection failed: ". $e->getMessage();
-        }
-
+        //Check if user exists
+        //$user - User::where('username', $username);
     }
 
     public function logout() {
